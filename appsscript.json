@@ -1,0 +1,63 @@
+
+{
+  "timeZone": "Australia/Melbourne",
+  "exceptionLogging": "STACKDRIVER",
+  "runtimeVersion": "V8",
+
+  "oauthScopes": [
+    "https://www.googleapis.com/auth/gmail.modify",
+    "https://www.googleapis.com/auth/gmail.readonly",
+    "https://www.googleapis.com/auth/gmail.addons.execute",
+    "https://www.googleapis.com/auth/gmail.addons.current.message.readonly",
+    "https://www.googleapis.com/auth/gmail.addons.current.message.metadata",
+    "https://www.googleapis.com/auth/userinfo.email",
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/script.external_request",
+    "https://www.googleapis.com/auth/script.scriptapp",
+    "https://www.googleapis.com/auth/drive.readonly"
+  ],
+
+  "dependencies": {
+    "enabledAdvancedServices": [
+      {
+        "userSymbol": "Sheets",
+        "serviceId": "sheets",
+        "version": "v4"
+      },
+      {
+        "userSymbol": "GmailAdvanced",
+        "serviceId": "gmail",
+        "version": "v1"
+      }
+    ]
+  },
+
+  "addOns": {
+    "common": {
+      "name": "OWTI CRM",
+      "logoUrl": "https://outwiththein.com/assets/logo.png"
+    },
+    "gmail": {
+      "primaryColor": "#3f51b5",
+      "homepageTrigger": {
+        "runFunction": "buildHome"
+      },
+      "contextualTriggers": [
+        {
+          "unconditional": {},
+          "onTriggerFunction": "buildAddOn"
+        }
+      ],
+      "universalActions": [
+        {
+          "text": "Open OWTI CRM",
+          "runFunction": "buildAddOn"
+        },
+        {
+          "text": "Chat with GPT",
+          "runFunction": "handleOpenChat"
+        }
+      ]
+    }
+  }
+}
